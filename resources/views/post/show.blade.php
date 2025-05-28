@@ -5,11 +5,16 @@
 @section('title', 'Detalle')
 
 @section('content')
-    <div>
-        <h1>Vista detalle del post: {{$post->id}}</h1>
+    <div class="flex flex-col items-center text-center">
+        <h1 class="text-6xl">Vista detalle del post: {{ $post->id }}</h1>
 
         @if ($post)
-            <h1>Titulo: {{$post->title}}</h1>
+            <div class="flex flex-col mb-6 mt-6 bg-gray-300 px-12 py-6 rounded hover:bg-gray-400">
+                <div>Id: {{ $post->id }} </div>
+                <div>Titulo: {{ $post->title }}</div>
+                <div>Poster: {{ $post->poster }} </div>
+                <div>Contenido: {{ $post->content }} </div>
+            </div>
         @else
             <h1>No hay objeto</h1>
         @endif
@@ -18,7 +23,7 @@
             <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Volver Home</button>
         </a>
 
-        <a href="/31.laravel/Tp-Laravel-12/public/post/edit/{{$post->id}}">
+        <a href="/31.laravel/Tp-Laravel-12/public/post/edit/{{ $post->id }}">
             <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Editar</button>
         </a>
     </div>

@@ -15,12 +15,12 @@ class PostController extends Controller
         return view('post/index', compact('posts'));
     }
 
-    // getShow
+    // Mostrar el post (getShow)
     public function getShow($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
-        return view('post/show', compact('post'));
+        return view('post.show', compact('post'));
     }
 
     // getCreate
@@ -28,20 +28,6 @@ class PostController extends Controller
     {
         return view('post/create');
     }
-
-    /*public function store(Request $request)
-    {
-        $post = new Post();
-
-        $post->title = $request->title;
-        $post->poster = $request->poster;
-        $post->habilitated = $request->has('habilitated') ? true : false;
-        $post->content = $request->content;
-
-        $post->save();
-
-        return redirect()->route('post.index');
-    }*/
 
     public function store(Request $request)
     {
@@ -57,11 +43,26 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
-    // getEdit
+    // getEdit ($id)
     public function getEdit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
-        return view('post/edit', compact('post'));
+        return view('post.edit', compact('post'));
+    }
+
+    // Actualizar el post (update)
+    public function update(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+
+        $post->title = $request->title;
+        $post->poster = $request->poster;
+        $post->habilitated = $request->has('habilitated');
+        $post->content = $request->content;
+
+        $post->save();
+
+        return redirect('/post/show/' . $post->id);
     }
 }
