@@ -5,8 +5,11 @@
 @section('title', 'Home')
 
 @section('content')
-    <div>
-        <h1>Pantalla principal</h1>
-        <a href="{{ route('post.index') }}">Listado de blogs</a>
+    <div class="flex flex-col items-center text-center">
+        <h1 class="text-6xl">Pantalla principal</h1>
+        {{-- /31.laravel/Tp-Laravel-12/public --}}
+        <a href="/login">
+            <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Log In</button>
+        </a>
     </div>
 @endsection
