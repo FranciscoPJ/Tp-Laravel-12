@@ -12,7 +12,7 @@
             <p class="text-green-600 mb-4">{{ session('success') }}</p>
         @endif
         {{-- /31.laravel/Tp-Laravel-12/public/post | {{ route('post.store') }} --}}
-        <form action="/31.laravel/Tp-Laravel-12/public/post" method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">
+        <form action="{{ route('post.store') }} " method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">
             
             @csrf
 

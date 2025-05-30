@@ -18,7 +18,8 @@
         @else
             <h1>No hay objeto</h1>
         @endif
-
+        
+        {{-- <a href="{{ route('post.create') }}"> --}}
         <a href="/31.laravel/Tp-Laravel-12/public/post">
             <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Volver Home</button>
         </a>
