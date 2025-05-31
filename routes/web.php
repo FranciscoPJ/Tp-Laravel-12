@@ -7,10 +7,13 @@ use App\Http\Controllers\PostController;
 
 // RUTA PRINCIPAL
 Route::get('/', [HomeController::class, 'getHome']);
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 // RUTAS PROTEGIDAS POR AUTENTICACIÓN
 //Route::middleware(['auth', 'verified'])->group(function ()
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     
     // DASHBOARD
     Route::get('/dashboard', function () {
