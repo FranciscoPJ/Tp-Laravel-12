@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -26,17 +27,30 @@ class PostController extends Controller
     // getCreate
     public function getCreate()
     {
-        return view('post/create');
+        $categories = Category::all(); // obtener todas las categorías
+        return view('post/create', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        $post = new Post();
 
+        // Validacion
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'poster' => 'required|string',
+            'id_category' => 'required|exists:categories,id',
+            'content' => 'required|string',
+        ]);
+
+        $post = new Post();
         $post->title = $request->title;
         $post->poster = $request->poster;
         $post->habilitated = $request->has('habilitated') ? true : false;
         $post->content = $request->content;
+
+        // Claves foráneas
+        $post->id_user = auth()->id(); // Usuario autenticado
+        $post->id_category = $request->id_category;
 
         $post->save();
 

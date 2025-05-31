@@ -13,7 +13,7 @@
         @endif
         {{-- /31.laravel/Tp-Laravel-12/public/post | {{ route('post.store') }} --}}
         <form action="{{ route('post.store') }} " method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">
-            
+
             @csrf
 
             <label>Título:</label>
@@ -21,6 +21,16 @@
 
             <label>Poster:</label>
             <input type="text" name="poster" value="{{ old('poster') }}" class="border p-2">
+
+            <label>Categoría:</label>
+            <select name="id_category" class="border p-2">
+                <option value="">Selecciona una categoría</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ old('id_category') == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
 
             <label>¿Habilitado?</label>
             <input type="checkbox" name="habilitated" value="1" {{ old('habilitated') ? 'checked' : '' }}>
