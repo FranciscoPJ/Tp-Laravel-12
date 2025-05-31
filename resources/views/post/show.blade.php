@@ -20,11 +20,11 @@
         @endif
         
         {{-- <a href="{{ route('post.create') }}"> --}}
-        <a href="/31.laravel/Tp-Laravel-12/public/post">
+        <a href="{{ route('post.index') }}">
             <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Volver Home</button>
         </a>
 
-        <a href="/31.laravel/Tp-Laravel-12/public/post/edit/{{ $post->id }}">
+        <a href="{{ route('post.edit', $post->id) }}">
             <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Editar</button>
         </a>
     </div>
