@@ -17,6 +17,13 @@ return new class extends Migration
             $table->string('poster');
             $table->boolean('habilitated')->default(false); // Campo booleano con valor por defecto false
             $table->text('content');
+
+            // Clave foránea a users
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
+
+            // Clave foránea a categories
+            $table->foreignId('id_category')->constrained('categories')->onDelete('cascade');
+
             $table->timestamps(); // created_at y updated_at
         });
     }
