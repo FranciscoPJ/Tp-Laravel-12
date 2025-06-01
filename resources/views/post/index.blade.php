@@ -28,6 +28,7 @@
                                     <div>Id: {{ $post->id }} </div>
                                     <div>Titulo: {{ $post->title }}</div>
                                     <div>Poster: {{ $post->poster }} </div>
+                                    <div>Categoria: {{ $post->id_category }} </div>
                                 </div>
                             </button>
                         </a>
