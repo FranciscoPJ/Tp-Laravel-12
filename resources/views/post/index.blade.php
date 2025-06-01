@@ -19,22 +19,22 @@
         @endif --}}
 
         @if (count($posts) > 0)
-            <ul class="flex flex-row gap-1">
+            <div class="flex flex-row gap-1">
                 @foreach ($posts as $post)
-                    <li>
+                    <div>
                         <a href="{{ route('post.show', $post->id) }}">
                             <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">
                                 <div class="flex flex-col">
-                                    <div>Id: {{ $post->id }} </div>
-                                    <div>Titulo: {{ $post->title }}</div>
-                                    <div>Poster: {{ $post->poster }} </div>
-                                    <div>Categoria: {{ $post->id_category }} </div>
+                                    <span>Id: {{ $post->id }} </span>
+                                    <span>Titulo: {{ $post->title }}</span>
+                                    <span>Poster: {{ $post->poster }} </span>
+                                    <span>Categoria: {{ $post->id_category }} </span>
                                 </div>
                             </button>
                         </a>
-                    </li>
+                    </div>
                 @endforeach
-            </ul>
+            </div>
         @else
             <br>
             <h3>No hay blogs subido</h3>
