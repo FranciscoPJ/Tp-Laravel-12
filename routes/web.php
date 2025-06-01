@@ -12,7 +12,6 @@ Route::get('/welcome', function () {
 });
 
 // RUTAS PROTEGIDAS POR AUTENTICACIÓN
-//Route::middleware(['auth', 'verified'])->group(function ()
 Route::middleware(['auth', 'verified'])->group(function () {
     
     // DASHBOARD

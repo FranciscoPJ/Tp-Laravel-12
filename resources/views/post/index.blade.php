@@ -12,16 +12,22 @@
             <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Agregar un blog </button>
         </a>
 
+        {{-- @if (Auth::check())
+            <p>Estás autenticado como {{ Auth::user()->name }}</p>
+        @else
+            <p>No estás autenticado</p>
+        @endif --}}
+
         @if (count($posts) > 0)
             <ul class="flex flex-row gap-1">
                 @foreach ($posts as $post)
-                    <li> 
+                    <li>
                         <a href="{{ route('post.show', $post->id) }}">
                             <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">
                                 <div class="flex flex-col">
-                                    <div>Id: {{ $post->id}} </div> 
-                                    <div>Titulo: {{ $post->title}}</div>
-                                    <div>Poster: {{ $post->poster}} </div>
+                                    <div>Id: {{ $post->id }} </div>
+                                    <div>Titulo: {{ $post->title }}</div>
+                                    <div>Poster: {{ $post->poster }} </div>
                                 </div>
                             </button>
                         </a>
