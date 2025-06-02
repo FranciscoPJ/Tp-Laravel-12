@@ -40,7 +40,7 @@
                                     <div class="flex flex-col">
                                         {{-- <span>Id: {{ $post->id }} </span> --}}                                        
                                         <span><img class="w-full h-32 object-cover rounded mb-2" src="{{ $post->poster }}" alt="{{ $post->title }}"></span>
-                                        <span>Titulo: {{ $post->title }}</span>
+                                        <span>{{ $post->title }}</span>
                                         {{-- <span>Poster: {{ $post->poster }} </span> --}}
                                         {{-- <span>Categoria: {{ $post->id_category }}</span> --}}
                                     </div>

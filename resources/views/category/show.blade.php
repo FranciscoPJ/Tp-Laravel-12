@@ -15,7 +15,9 @@
                     <div class="flex flex-col mb-6 mt-6 px-36 py-6 rounded bg-gray-300 gap-2 w-[92%]">
                         <div>Id: {{ $post->id }} </div>
                         <div>Titulo: {{ $post->title }}</div>
-                        <div>Poster: {{ $post->poster }} </div>
+                        <div><img class="w-full h-64 object-cover rounded mb-2" src="{{ $post->poster }}"
+                                alt="{{ $post->title }}"></div>
+
                         <div>Contenido: {{ $post->content }} </div>
                     </div>
 
