@@ -2,7 +2,7 @@
 
 {{-- con componente es: <x-layout> ... </x-layout> --}}
 
-@section('title', 'Añadir')
+@section('title', 'Añadir Blog')
 
 @section('content')
     <div>

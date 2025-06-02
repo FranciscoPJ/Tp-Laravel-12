@@ -2,7 +2,7 @@
 
 {{-- con componente es: <x-layout> ... </x-layout> --}}
 
-@section('title', 'Home')
+@section('title', 'Categorias')
 
 @section('content')
     <div>
