@@ -35,7 +35,7 @@
                 <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 text-center">
                     @foreach ($posts as $post)
                         <div>
-                            <a href="{{ route('post.show', $post->id) }}">
+                            <a href="{{ route('category.show', $post->id) }}">
                                 <button class="mb-2 mt-2 bg-sky-400 px-6 py-6 rounded hover:bg-cyan-500 w-5/6">
                                     <div class="flex flex-col">
                                         {{-- <span>Id: {{ $post->id }} </span> --}}

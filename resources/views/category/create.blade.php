@@ -12,7 +12,7 @@
             <p class="text-green-600 mb-4">{{ session('success') }}</p>
         @endif
         
-        <form action="{{ route('post.store') }} " method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">
+        <form action="{{ route('category.store') }} " method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">
 
             @csrf
 
@@ -52,7 +52,7 @@
 
             <div class="w-[600px] mt-4 flex justify-end">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                    Crear Post
+                    Crear Blog
                 </button>
             </div>
             

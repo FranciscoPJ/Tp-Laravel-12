@@ -14,7 +14,7 @@ Route::get('/welcome', function () {
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
 // RUTA SIN AUTENTICACIÓN
-Route::get('/post', [PostController::class, 'getIndex'])->name('post.index');
+Route::get('/category', [PostController::class, 'getIndex'])->name('category.index');
 
 // RUTAS PROTEGIDAS POR AUTENTICACIÓN
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -30,11 +30,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // POSTS (solo accesibles para usuarios autenticados)    
-    Route::get('/post/create', [PostController::class, 'getCreate'])->name('post.create');
-    Route::post('/post', [PostController::class, 'store'])->name('post.store');
-    Route::get('/post/show/{id}', [PostController::class, 'getShow'])->name('post.show');
-    Route::get('/post/edit/{id}', [PostController::class, 'getEdit'])->name('post.edit');
-    Route::put('/post/show/{id}', [PostController::class, 'update'])->name('post.update');
+    Route::get('/category/create', [PostController::class, 'getCreate'])->name('category.create');
+    Route::post('/category', [PostController::class, 'store'])->name('category.store');
+    Route::get('/category/show/{id}', [PostController::class, 'getShow'])->name('category.show');
+    Route::get('/category/edit/{id}', [PostController::class, 'getEdit'])->name('category.edit');
+    Route::put('/category/show/{id}', [PostController::class, 'update'])->name('category.update');
 
 });
 

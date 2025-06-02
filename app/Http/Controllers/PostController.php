@@ -14,7 +14,7 @@ class PostController extends Controller
         $posts = Post::all();
         $categories = Category::all();
 
-        return view('post/index', compact('posts'), compact('categories'));
+        return view('category/index', compact('posts'), compact('categories'));
     }
 
     // Mostrar el post (getShow)
@@ -22,14 +22,14 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        return view('post.show', compact('post'));
+        return view('category.show', compact('post'));
     }
 
     // getCreate
     public function getCreate()
     {
         $categories = Category::all(); // obtener todas las categorías
-        return view('post/create', compact('categories'));
+        return view('category/create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -55,7 +55,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('post.index');
+        return redirect()->route('category.index');
     }
 
     // getEdit ($id)
@@ -64,7 +64,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $categories = Category::all(); // Pasa las categorías
 
-        return view('post.edit', compact('post', 'categories'));
+        return view('category.edit', compact('post', 'categories'));
     }
 
     // Actualizar el post (update)
@@ -79,6 +79,6 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect('/post/show/' . $post->id);
+        return redirect('/category/show/' . $post->id);
     }
 }

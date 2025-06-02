@@ -19,14 +19,10 @@
                         <div>Contenido: {{ $post->content }} </div>
                     </div>
 
-                    <a href="{{ route('post.edit', $post->id) }}" class="w-screen flex justify-center">
+                    <a href="{{ route('category.edit', $post->id) }}" class="w-screen flex justify-center">
                         <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 w-32">Editar</button>
                     </a>
                 </div>
-
-
-
-
             </div>
         @else
             <h1>No hay objeto</h1>

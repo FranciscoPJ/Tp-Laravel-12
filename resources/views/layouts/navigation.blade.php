@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
@@ -20,12 +20,12 @@
                         {{ __('Dashboard') }}
                     </x-nav-link> --}}
 
-                    <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('post.index')">
                         {{ __('Categorias') }}
                     </x-nav-link>
 
                     @auth
-                        <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
+                        <x-nav-link :href="route('category.create')" :active="request()->routeIs('post.create')">
                             {{ __('Añadir Blog') }}
                         </x-nav-link>
                     @endauth
@@ -105,12 +105,12 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link> --}}
 
-            <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                {{ __('Articles') }}
+            <x-responsive-nav-link :href="route('category.index')" :active="request()->routeIs('post.index')">
+                {{ __('Categorias') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                {{ __('New Article') }}
+            <x-responsive-nav-link :href="route('category.create')" :active="request()->routeIs('post.create')">
+                {{ __('Añadir Blog') }}
             </x-responsive-nav-link>
         </div>
 

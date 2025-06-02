@@ -9,7 +9,7 @@
         <h1 class="font-semibold text-6xl text-start ml-8 text-gray-800 leading-tight">Modificar blog: {{ $post->title }}
         </h1>
 
-        <form action="{{ route('post.update', $post->id) }}" method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">
+        <form action="{{ route('category.update', $post->id) }}" method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">
 
             @csrf
             @method('PUT')
@@ -57,7 +57,7 @@
             <div class="w-[600px] mt-4 flex justify-between">
 
                 <button class="mt-4 bg-gray-300  px-4 py-2 rounded hover:bg-gray-400">
-                    <a href="{{ route('post.show', $post->id) }}">Volver Detalle</a>
+                    <a href="{{ route('category.show', $post->id) }}">Volver Detalle</a>
                 </button>
 
                 <button type="submit" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
