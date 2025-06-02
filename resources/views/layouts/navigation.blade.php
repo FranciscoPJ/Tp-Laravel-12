@@ -77,8 +77,13 @@
             <!-- Guest Links -->
             @guest
                 <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-                    <a href="{{ route('register') }}" class="text-sm text-gray-700 underline">Register</a>
+                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                        {{ __('Iniciar Sesion') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                        {{ __('Registrarse') }}
+                    </x-nav-link>
                 </div>
             @endguest
 
@@ -145,11 +150,11 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4 space-y-2">
                 <x-responsive-nav-link :href="route('login')">
-                    {{ __('Login') }}
+                    {{ __('Iniciar Sesion') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="route('register')">
-                    {{ __('Register') }}
+                    {{ __('Registrarse') }}
                 </x-responsive-nav-link>
             </div>
         </div>

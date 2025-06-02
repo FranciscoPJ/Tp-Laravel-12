@@ -37,18 +37,14 @@
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
-            @endif
-
-            {{-- <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button> --}}
+            @endif            
 
             <x-primary-button class="ms-3">
-                {{ __('Log in') }}
+                {{ __('Iniciar Sesion') }}
             </x-primary-button>
 
             <button class="ms-3 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150'">
-                <a href="{{ route('register') }}">Registarse</a>
+                <a href="{{ route('register') }}">{{ __('Registrarse') }}</a>
             </button>
         </div>
     </form>
