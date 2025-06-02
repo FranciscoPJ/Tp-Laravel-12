@@ -38,10 +38,11 @@
                             <a href="{{ route('category.show', $post->id) }}">
                                 <button class="mb-2 mt-2 bg-sky-400 px-6 py-6 rounded hover:bg-cyan-500 w-5/6">
                                     <div class="flex flex-col">
-                                        {{-- <span>Id: {{ $post->id }} </span> --}}
+                                        {{-- <span>Id: {{ $post->id }} </span> --}}                                        
+                                        <span><img class="w-full h-32 object-cover rounded mb-2" src="{{ $post->poster }}" alt="{{ $post->title }}"></span>
                                         <span>Titulo: {{ $post->title }}</span>
-                                        <span>Poster: {{ $post->poster }} </span>
-                                        <span>Categoria: {{ $post->id_category }} </span>
+                                        {{-- <span>Poster: {{ $post->poster }} </span> --}}
+                                        {{-- <span>Categoria: {{ $post->id_category }}</span> --}}
                                     </div>
                                 </button>
                             </a>
