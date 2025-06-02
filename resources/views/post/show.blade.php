@@ -5,27 +5,31 @@
 @section('title', 'Detalle')
 
 @section('content')
-    <div class="flex flex-col items-center text-center">
-        <h1 class="text-6xl">Vista detalle del post: {{ $post->id }}</h1>
+    <div>
+        <h1 class="font-semibold text-6xl text-start ml-8 text-gray-800 leading-tight">Vista detalle del post:
+            {{ $post->id }}</h1>
 
         @if ($post)
-            <div class="flex flex-col mb-6 mt-6 bg-gray-300 px-12 py-6 rounded hover:bg-gray-400">
-                <div>Id: {{ $post->id }} </div>
-                <div>Titulo: {{ $post->title }}</div>
-                <div>Poster: {{ $post->poster }} </div>
-                <div>Contenido: {{ $post->content }} </div>
+            <div class="w-screen">
+                <div class="flex flex-col items-center">
+                    <div class="flex flex-col mb-6 mt-6 px-36 py-6 rounded bg-gray-300 gap-2 w-[92%]">
+                        <div>Id: {{ $post->id }} </div>
+                        <div>Titulo: {{ $post->title }}</div>
+                        <div>Poster: {{ $post->poster }} </div>
+                        <div>Contenido: {{ $post->content }} </div>
+                    </div>
+
+                    <a href="{{ route('post.edit', $post->id) }}" class="w-screen flex justify-center">
+                        <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 w-32">Editar</button>
+                    </a>
+                </div>
+
+
+
+
             </div>
         @else
             <h1>No hay objeto</h1>
         @endif
-        
-        {{-- <a href="{{ route('post.create') }}"> --}}
-        <a href="{{ route('post.index') }}">
-            <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Volver Home</button>
-        </a>
-
-        <a href="{{ route('post.edit', $post->id) }}">
-            <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Editar</button>
-        </a>
     </div>
 @endsection

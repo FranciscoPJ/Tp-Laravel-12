@@ -5,10 +5,18 @@
 @section('title', 'Home')
 
 @section('content')
-    <div class="flex flex-col items-center text-center">
-        <h1 class="text-6xl">Pantalla principal</h1>
-        <a href="{{route('login')}}">
-            <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Log In</button>
-        </a>
+    <div>
+        <h1 class="font-semibold text-6xl text-start ml-8 text-gray-800 leading-tight">
+            Inicio
+        </h1>
+    </div>
+    <div class="py-1">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    {{ __("Estas en Pantalla Principal!") }}
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

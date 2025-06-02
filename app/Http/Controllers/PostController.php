@@ -12,8 +12,9 @@ class PostController extends Controller
     public function getIndex()
     {
         $posts = Post::all();
+        $categories = Category::all();
 
-        return view('post/index', compact('posts'));
+        return view('post/index', compact('posts'), compact('categories'));
     }
 
     // Mostrar el post (getShow)

@@ -5,43 +5,67 @@
 @section('title', 'Modificar')
 
 @section('content')
-    <div class="flex flex-col items-center text-center">
-        <h1 class="text-6xl">Modificar post: {{ $post->title }}</h1>
+    <div>
+        <h1 class="font-semibold text-6xl text-start ml-8 text-gray-800 leading-tight">Modificar blog: {{ $post->title }}
+        </h1>
 
         <form action="{{ route('post.update', $post->id) }}" method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">
 
             @csrf
             @method('PUT')
 
-            <label>Título:</label>
-            <input type="text" name="title" value="{{$post->title}}" class="border p-2">
+            <label class="text-start w-[600px] ml-2">Título:</label>
+            <input type="text" name="title" value="{{ $post->title }}"
+                class="w-[600px] shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Escribe un titulo...">
 
-            <label>Poster:</label>
-            <input type="text" name="poster" value="{{$post->poster}}" class="border p-2">
+            <label class="text-start w-[600px] ml-2">Poster:</label>
+            <input type="text" name="poster" value="{{ $post->poster }}"
+                class="w-[600px] shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Escribe una URL de un poster...">
 
-            <label>Categoría:</label>
-            <select name="id_category" class="border p-2">
-                <option value="">Selecciona una categoría</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ $post->id_category == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
+            <label class="text-start w-[600px] ml-2">Categoría:</label>
+            <div class="inline-block relative">
+                <select name="id_category"
+                    class="block w-[600px] shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Selecciona una categoría</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ $post->id_category == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0.5 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                </div>
+            </div>
 
-            <label>¿Habilitado?</label>
-            <input type="checkbox" name="habilitated" value="1" {{ $post->habilitated ? 'checked' : '' }}>
 
-            <label>Contenido:</label>
-            <textarea name="content" class="border p-2">{{$post->content}}</textarea>
+            <div class="flex mb-4 mt-4 w-[600px] shadow appearance-none border rounded py-3 px-1 bg-white bg-opacity-75">
+                <label for="default-checkbox" class="text-start">¿Habilitado?</label>
+                <input type="checkbox" name="habilitated" value="1" {{ $post->habilitated ? 'checked' : '' }}
+                    class="w-4 ml-2 mt-0.5">
+            </div>
 
-            <button type="submit" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                Editar Blog
-            </button>
+            <label class="text-start w-[600px] ml-2">Contenido:</label>
+            <textarea name="content" rows="2" cols="76"
+                class="shadow appearance-none border py-2 px-3 rounded-lg focus:outline-none focus:shadow-outline"
+                placeholder="Escribe un contenido...">{{ $post->content }}</textarea>
+
+            <div class="w-[600px] mt-4 flex justify-between">
+
+                <button class="mt-4 bg-gray-300  px-4 py-2 rounded hover:bg-gray-400">
+                    <a href="{{ route('post.show', $post->id) }}">Volver Detalle</a>
+                </button>
+
+                <button type="submit" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Editar Blog
+                </button>
+            </div>
         </form>
 
-        <a href="{{ route('post.index') }}">
-            <button class="mb-4 mt-4 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Volver Home</button>
-        </a>
+
     </div>
 @endsection
