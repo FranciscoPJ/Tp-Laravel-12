@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 
 // RUTA DE EJEMPLO
 Route::get('/welcome', function () {
@@ -14,7 +14,7 @@ Route::get('/welcome', function () {
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
 // RUTA SIN AUTENTICACIÓN
-Route::get('/category', [PostController::class, 'getIndex'])->name('category.index');
+Route::get('/category', [CategoryController::class, 'getIndex'])->name('category.index');
 
 // RUTAS PROTEGIDAS POR AUTENTICACIÓN
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -30,11 +30,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // POSTS (solo accesibles para usuarios autenticados)    
-    Route::get('/category/create', [PostController::class, 'getCreate'])->name('category.create');
-    Route::post('/category', [PostController::class, 'store'])->name('category.store');
-    Route::get('/category/show/{id}', [PostController::class, 'getShow'])->name('category.show');
-    Route::get('/category/edit/{id}', [PostController::class, 'getEdit'])->name('category.edit');
-    Route::put('/category/show/{id}', [PostController::class, 'update'])->name('category.update');
+    Route::get('/category/create', [CategoryController::class, 'getCreate'])->name('category.create');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/show/{id}', [CategoryController::class, 'getShow'])->name('category.show');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'getEdit'])->name('category.edit');
+    Route::put('/category/show/{id}', [CategoryController::class, 'update'])->name('category.update');
 
 });
 

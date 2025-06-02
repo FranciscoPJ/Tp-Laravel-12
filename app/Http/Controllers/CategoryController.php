@@ -3,28 +3,83 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {   
     // getIndex
-    public function getIndex(){
-        return view('category/index');
+    public function getIndex()
+    {
+        $posts = Post::all();
+        $categories = Category::all();
+
+        return view('category/index', compact('posts'), compact('categories'));
     }
 
-    // getShow
-    public function getShow($id){
-        return view('category/show', compact('id'));
+    // Mostrar el post (getShow)
+    public function getShow($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return view('category.show', compact('post'));
     }
 
     // getCreate
-    public function getCreate(){
-        return view('category/create');
+    public function getCreate()
+    {
+        $categories = Category::all(); // obtener todas las categorías
+        return view('category/create', compact('categories'));
     }
 
-    // getEdit
-    public function getEdit($id){
-        return view('category/edit', compact('id'));
+    public function store(Request $request)
+    {
+
+        // Validacion
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'poster' => 'required|string',
+            'id_category' => 'required|exists:categories,id',
+            'content' => 'required|string',
+        ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->poster = $request->poster;
+        $post->habilitated = $request->has('habilitated') ? true : false;
+        $post->content = $request->content;
+
+        // Claves foráneas
+        $post->id_user = auth()->id(); // Usuario autenticado
+        $post->id_category = $request->id_category;
+
+        $post->save();
+
+        return redirect()->route('category.index');
+    }
+
+    // getEdit ($id)
+    public function getEdit($id)
+    {
+        $post = Post::findOrFail($id);
+        $categories = Category::all(); // Pasa las categorías
+
+        return view('category.edit', compact('post', 'categories'));
+    }
+
+    // Actualizar el post (update)
+    public function update(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+
+        $post->title = $request->title;
+        $post->poster = $request->poster;
+        $post->habilitated = $request->has('habilitated');
+        $post->content = $request->content;
+
+        $post->save();
+
+        return redirect('/category/show/' . $post->id);
     }
 }
 ?>
