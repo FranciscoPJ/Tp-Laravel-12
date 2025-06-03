@@ -7,15 +7,30 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
-{   
-    // getIndex
-    public function getIndex()
+{
+    /* public function getIndex()
     {
         $posts = Post::all();
         $categories = Category::all();
 
         return view('category/index', compact('posts'), compact('categories'));
     }
+    */
+
+    // getIndex PREGUNTAR SI ES CON BLADE O JS, FILTRADO
+    public function getIndex(Request $request)
+{
+    $categories = Category::all();
+    $categoryId = $request->query('category');
+
+    if ($categoryId) {        
+        $posts = Post::where('id_category', $categoryId)->get();
+    } else {
+        $posts = Post::all();
+    }
+
+    return view('category.index', compact('posts', 'categories'));
+}
 
     // Mostrar el post (getShow)
     public function getShow($id)
@@ -82,4 +97,3 @@ class CategoryController extends Controller
         return redirect('/category/show/' . $post->id);
     }
 }
-?>
