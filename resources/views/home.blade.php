@@ -17,39 +17,31 @@
         </div>
     </div>
 
-    {{-- border-2 border-black" --}}
-    <div class="grid sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full p-6 gap-2">
+    {{-- @php
+        $postsOrdenadosDesc = $posts->sortByDesc('id');
+    @endphp --}}
 
-        <div id="slider" class="w-full h-80 flex justify-center text-center col-span-2 relative overflow-hidden">
-            <div
-                class="slide w-full text-white h-full bg-red-500 flex justify-center items-center absolute transition-opacity duration-1000 opacity-0">
-                imagen 1
-            </div>
+    {{-- @dd($posts) --}}
+    
+    <div class="grid sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full h-96 p-6 gap-2">
 
-            <div
-                class="slide w-full text-white h-full bg-red-800 flex justify-center items-center absolute transition-opacity duration-1000 opacity-0">
-                imagen 2
-            </div>
-
-            <div
-                class="slide w-full text-white h-full bg-red-950 flex justify-center items-center absolute transition-opacity duration-1000 opacity-0">
-                imagen 3
-            </div>
+        <div id="slider" class="w-full h-80 flex justify-center text-center col-span-2 relative overflow-hidden z-0">
+            {{-- @foreach ($postsOrdenadosDesc->take(3) as $post) --}}
+            @foreach ($posts->take(3) as $post)
+                <div
+                    class="slide w-full text-white h-full bg-red-500 flex justify-center items-center absolute transition-opacity duration-1000 opacity-0">
+                    <img src="{{ $post->poster }} " alt="home">
+                </div>
+            @endforeach            
         </div>
 
         {{-- border-2 border-black" --}}
         <div class="w-full h-full flex flex-col col-span-1 items-end gap-1">
-            <div class="w-80 h-full text-white hover:bg-orange-500 bg-red-500 flex justify-center items-center">
-                imagen 4
-            </div>
-
-            <div class="w-80 h-full text-white hover:bg-orange-800 bg-red-800 flex justify-center items-center">
-                imagen 5
-            </div>
-
-            <div class="w-80 h-full text-white hover:bg-orange-900 bg-red-900 flex justify-center items-center">
-                imagen 6
-            </div>
+            @foreach ($posts->take(3) as $post)
+                <div class="w-full h-fit justify-center items-center">
+                    <img src="{{ $post->poster }} " alt="home">
+                </div>
+            @endforeach  
         </div>
 
     </div>

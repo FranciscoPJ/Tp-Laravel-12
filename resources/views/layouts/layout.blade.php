@@ -10,7 +10,7 @@
 
 <body>
 
-    <header class="sticky top-0">
+    <header class="sticky top-0 z-50">
         @include('layouts.navigation')
     </header>
     
