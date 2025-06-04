@@ -8,7 +8,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="bg-gray-200">
+<body>
 
     <header class="sticky top-0">
         @include('layouts.navigation')

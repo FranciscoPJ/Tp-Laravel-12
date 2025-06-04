@@ -11,7 +11,7 @@
         </h1> --}}
 
         @if ($post)
-            <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 p-4 h-full">
+            <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 p-4 h-screen">
                 <div class="flex flex-col py-4 px-2 rounded-2xl bg-gray-300 gap-2 size-auto">
                     {{-- <div>Id: {{ $post->id }} </div> --}}
                     <div class="text-3xl font-medium">{{ $post->title }}</div>
