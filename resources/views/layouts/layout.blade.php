@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100">
 
-    <header>
+    <header class="sticky top-0">
         @include('layouts.navigation')
     </header>
     
