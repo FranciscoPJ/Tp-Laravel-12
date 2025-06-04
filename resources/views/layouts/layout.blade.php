@@ -8,7 +8,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-200">
 
     <header class="sticky top-0">
         @include('layouts.navigation')
@@ -18,7 +18,9 @@
         @yield('content')
     </main>
 
-    <footer></footer>
+    <footer class="flex justify-center items-center mt-4 bg-white border-b border-gray-100">
+        Blogs.com
+    </footer>
 
 </body>
 </html>

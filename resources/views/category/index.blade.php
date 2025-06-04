@@ -32,55 +32,55 @@
             </div>
         @endif
 
-        @auth
-            @if (count($posts) > 0)
-                @if (request('category'))
-                    <div class="mt-4 text-lg ml-8 text-gray-600">
-                        @php
-                            $selected = $categories->firstWhere('id', request('category'));
-                        @endphp
-                        Mostrando blogs de la categoría: <strong>{{ $selected->name ?? 'Desconocida' }}</strong>
-                    </div>
-                @else
-                    <div class="mt-4 ml-8 text-lg text-gray-600 transition-opacity duration-500">
-                    <strong>Mostrando todos los blogs</strong>
-                </div>
-                @endif
 
-                <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 text-center">
-                    @foreach ($posts as $post)
-                        <div>
-                            <a href="{{ route('category.show', $post->id) }}">
-                                <button class="mb-2 mt-2 bg-sky-400 px-6 py-6 rounded hover:bg-cyan-500 w-5/6">
-                                    <div class="flex flex-col">
-                                        <span>ID: {{ $post->id }}</span>
-                                        <span>
-                                            <img class="w-full h-32 object-cover rounded mb-2" src="{{ $post->poster }}"
-                                                alt="{{ $post->title }}">
-                                        </span>
-                                        <span>{{ $post->title }}</span>
-                                    </div>
-                                </button>
-                            </a>
-                        </div>
-                    @endforeach
+        @if (count($posts) > 0)
+            @if (request('category'))
+                <div class="mt-4 text-lg ml-8 text-gray-600">
+                    @php
+                        $selected = $categories->firstWhere('id', request('category'));
+                    @endphp
+                    Mostrando blogs de la categoría: <strong>{{ $selected->name ?? 'Desconocida' }}</strong>
                 </div>
             @else
-                <br>
-                <div id="no-posts-message" class="mt-4 ml-8 text-lg text-gray-600 transition-opacity duration-500">
-                    <strong>No hay blogs subidos</strong>
+                <div class="mt-4 ml-8 text-lg text-gray-600 transition-opacity duration-500">
+                    <strong>Mostrando todos los blogs</strong>
                 </div>
-
-                <script>
-                    setTimeout(() => {
-                        const msg = document.getElementById('no-posts-message');
-                        if (msg) {
-                            msg.classList.add('opacity-0');
-                            setTimeout(() => msg.remove(), 500); // elimina el elemento del DOM después de la transición
-                        }
-                    }, 3000); // 3 segundos
-                </script>
             @endif
-        @endauth
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 text-center">
+                @foreach ($posts as $post)
+                    <div>
+                        <a href="{{ route('category.show', $post->id) }}">
+                            <button class="mb-2 mt-2 bg-sky-400 px-6 py-6 rounded hover:bg-cyan-500 w-5/6">
+                                <div class="flex flex-col">
+                                    <span>ID: {{ $post->id }}</span>
+                                    <span>
+                                        <img class="w-full h-32 object-cover rounded mb-2" src="{{ $post->poster }}"
+                                            alt="{{ $post->title }}">
+                                    </span>
+                                    <span>{{ $post->title }}</span>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <br>
+            <div id="no-posts-message" class="mt-4 ml-8 text-lg text-gray-600 transition-opacity duration-500">
+                <strong>No hay blogs subidos</strong>
+            </div>
+
+            <script>
+                setTimeout(() => {
+                    const msg = document.getElementById('no-posts-message');
+                    if (msg) {
+                        msg.classList.add('opacity-0');
+                        setTimeout(() => msg.remove(), 500); // elimina el elemento del DOM después de la transición
+                    }
+                }, 3000); // 3 segundos
+            </script>
+        @endif
+
     </div>
 @endsection
