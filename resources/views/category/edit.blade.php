@@ -6,7 +6,8 @@
 
 @section('content')
     <div>
-        <h1 class="font-semibold text-6xl text-start ml-8 text-gray-800 leading-tight">Modificar blog: {{ $post->title }}
+        <h1 class="font-semibold text-6xl text-start ml-8 text-gray-800 leading-tight">
+            Modificar blog: {{ $post->title }}
         </h1>
 
         <form action="{{ route('category.update', $post->id) }}" method="POST" class="flex flex-col items-center gap-2 mb-4 mt-4">

@@ -11,48 +11,49 @@
         </h1>
     </div>
 
-    <div class="max-w-7xl sm:px-6 lg:px-8">
+    {{-- <div class="max-w-7xl sm:px-6 lg:px-8">
         <div class="p-1 text-gray-900">
             {{ Auth::check() ? __('Has Iniciado Sesion!') : __('Estas en Pantalla Principal') }}
         </div>
-    </div>
+    </div> --}}
 
     {{-- @php
         $postsOrdenadosDesc = $posts->sortByDesc('id');
     @endphp --}}
 
     {{-- @dd($posts) --}}
-    
-    <div class="grid sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full h-96 p-6 gap-2">
 
-        <div id="slider" class="w-full h-80 flex justify-center text-center col-span-2 relative overflow-hidden z-0">
-            {{-- @foreach ($postsOrdenadosDesc->take(3) as $post) --}}
-            @foreach ($posts->take(3) as $post)
-                <div
-                    class="slide w-full text-white h-full bg-red-500 flex justify-center items-center absolute transition-opacity duration-1000 opacity-0">
-                    <img src="{{ $post->poster }} " alt="home">
-                </div>
-            @endforeach            
+    <div class="grid sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full h-[400px] p-2 gap-2">
+
+        <div id="slider" class="w-full  h-[400px] flex justify-center text-center col-span-2 relative overflow-hidden z-0">
+            <div class="relative w-full h-[400px]">
+                @foreach ($posts->take(3) as $post)
+                    <div
+                        class="slide w-full  h-[400px] flex justify-center items-center absolute transition-opacity duration-1000 opacity-0 rounded-sm">
+                        <img src="{{ $post->poster }}" alt="home" class="object-cover w-full h-full">
+                    </div>
+                @endforeach
+            </div>
         </div>
 
         {{-- border-2 border-black" --}}
-        <div class="w-full h-full flex flex-col col-span-1 items-end gap-1">
+        <div class="w-full flex flex-col col-span-1 items-end gap-2 h-[400px]">
             @foreach ($posts->take(3) as $post)
-                <div class="w-full h-fit justify-center items-center">
-                    <img src="{{ $post->poster }} " alt="home">
+                <div class="w-full h-[128px]">
+                    <img class="h-[128px] w-full rounded-sm" src="{{ $post->poster }}" alt="home">
                 </div>
-            @endforeach  
+            @endforeach
         </div>
 
     </div>
 
-    <div class="w-full flex flex-col items-start">
+    <div class="w-full mt-2 flex flex-col items-start">
 
-        <h2 class="ml-6 text-5xl">
+        <h2 class="ml-2 text-5xl">
             Explora Nuestros Blogs
         </h2>
 
-        <div class="mt-4 ml-6 text-md">
+        <div class="mt-2 ml-3 text-md">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, nobis harum eum esse doloribus iure provident
             architecto? Corporis harum eligendi, magni corrupti aperiam neque perspiciatis, iste facere molestiae obcaecati
             vero.

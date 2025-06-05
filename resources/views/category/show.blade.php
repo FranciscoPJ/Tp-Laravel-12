@@ -5,20 +5,27 @@
 @section('title', 'Detalle Blog')
 
 @section('content')
-    <div>
-        {{-- <h1 class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 font-semibold text-6xl text-start ml-8 text-gray-800 leading-tight">
-            Detalle del Blog: {{ $post->title }}
-        </h1> --}}
-
+    <div>        
         @if ($post)
-            <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 p-4 h-screen">
-                <div class="flex flex-col py-4 px-2 rounded-2xl bg-gray-300 gap-2 size-auto">
-                    {{-- <div>Id: {{ $post->id }} </div> --}}
-                    <div class="text-3xl font-medium">{{ $post->title }}</div>
-                    <div class="mt-2 mb-2"><img class="w-screen h-full rounded mb-2" src="{{ $post->poster }}"
+            <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 h-fit">
+                
+                <div class="flex flex-col px-2 rounded-2xl gap-2 size-auto">                    
+                    
+                    <div class="text-5xl font-normal">{{ $post->title }}</div>
+                    
+                    <div>
+                        <img class="w-full h-[450px] rounded mb-1" src="{{ $post->poster }}"
                             alt="{{ $post->title }}">
                     </div>
-                    <div class="font-light">{{ $post->content }} </div>
+
+                    <div class="font-light first-line:text-3xl">
+                        {{ $post->content }} 
+                        <br>
+                        <div class="pl-1">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, cum porro. Earum sit, molestias doloribus ea quas voluptas debitis consectetur in! Temporibus minima obcaecati odit numquam impedit necessitatibus doloremque laboriosam?
+                        </div>
+                    </div>
+
                 </div>
 
                 @auth
@@ -28,7 +35,7 @@
                 @endauth
             </div>
         @else
-            <h1>No hay objeto</h1>
+            <h1>No hay blog</h1>
         @endif
     </div>
 @endsection
