@@ -26,7 +26,9 @@
                             impedit necessitatibus doloremque laboriosam?
                         </div>
                     </div>
-
+                    <div>
+                        #{{$category->name}}
+                    </div>
                 </div>
 
                 @auth
