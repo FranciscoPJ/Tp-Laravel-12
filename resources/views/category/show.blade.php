@@ -13,8 +13,8 @@
                     
                     <div class="text-5xl font-normal">{{ $post->title }}</div>
                     
-                    <div>
-                        <img class="w-full h-[450px] rounded mb-1" src="{{ $post->poster }}"
+                    <div class="mt-3 flex justify-center items-center">
+                        <img class="w-[90%] h-screen rounded mb-1" src="{{ $post->poster }}"
                             alt="{{ $post->title }}">
                     </div>
 

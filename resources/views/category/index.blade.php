@@ -13,7 +13,7 @@
                 <div class="flex flex-col mt-2 items-center">
                     <a class="w-60" href="{{ route('category.index') }}">
                         <span
-                            class="bg-blue-500 w-60 py-1 rounded hover:bg-blue-600 block text-white text-center font-semibold">
+                            class="w-60 py-1 rounded hover:bg-gray-200 border block text-black text-center font-semibold">
                             Todas las categorías
                         </span>
                     </a>
@@ -23,19 +23,18 @@
                 @foreach ($categories as $category)
                     <div class="flex flex-col mt-2 items-center">
                         <a class="w-60" href="{{ route('category.index', ['category' => $category->id]) }}">
-                            <span class="bg-green-400 w-60 py-1 rounded hover:bg-lime-400 block text-white">
+                            <span class="border w-60 py-1 rounded hover:bg-gray-200 block text-black font-semibold">
                                 {{ $category->name }}
                             </span>
                         </a>
                     </div>
-                @endforeach
+                @endforeach                
             </div>
         @endif
 
-
         @if (count($posts) > 0)
             @if (request('category'))
-                <div class="mt-4 text-lg ml-8 text-gray-600">
+                <div class="mt-4 text-lg ml-8 text-black">
                     @php
                         $selected = $categories->firstWhere('id', request('category'));
                     @endphp
@@ -43,17 +42,18 @@
                 </div>
             @else
                 <div class="mt-4 ml-8 text-lg text-gray-600 transition-opacity duration-500">
-                    <strong>Mostrando todos los blogs</strong>
+                    Mostrando todos los <strong>blogs</strong>
                 </div>
             @endif
-
+            
+            {{-- Listado de blogs --}}
             <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 text-center">
                 @foreach ($posts as $post)
                     <div>
                         <a href="{{ route('category.show', $post->id) }}">
-                            <button class="mb-2 mt-2 bg-sky-400 px-6 py-6 rounded hover:bg-cyan-500 w-5/6">
+                            <button class="mb-2 mt-2 border px-2 py-2 rounded hover:bg-gray-200 w-5/6">
                                 <div class="flex flex-col">
-                                    <span>ID: {{ $post->id }}</span>
+                                    {{-- <span>ID: {{ $post->id }}</span> --}}
                                     <span>
                                         <img class="w-full h-32 object-cover rounded mb-2" src="{{ $post->poster }}"
                                             alt="{{ $post->title }}">

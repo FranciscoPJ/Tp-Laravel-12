@@ -5,11 +5,11 @@
 @section('title', 'Home')
 
 @section('content')
-    <div>
-        <h1 class="font-semibold text-6xl text-start ml-8 text-gray-800 leading-tight">
+    {{-- <div>
+        <h1 class="font-semibold text-4xl text-start ml-2 text-gray-800 leading-tight">
             Inicio
         </h1>
-    </div>
+    </div> --}}
 
     {{-- <div class="max-w-7xl sm:px-6 lg:px-8">
         <div class="p-1 text-gray-900">
@@ -23,29 +23,29 @@
 
     {{-- @dd($posts) --}}
 
-    <div class="grid sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 w-full h-[400px] p-2 gap-2">
-
-        <div id="slider" class="w-full  h-[400px] flex justify-center text-center col-span-2 relative overflow-hidden z-0">
-            <div class="relative w-full h-[400px]">
-                @foreach ($posts->take(3) as $post)
-                    <div
-                        class="slide w-full  h-[400px] flex justify-center items-center absolute transition-opacity duration-1000 opacity-0 rounded-sm">
-                        <img src="{{ $post->poster }}" alt="home" class="object-cover w-full h-full">
-                    </div>
-                @endforeach
+    <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 w-full h-fit p-2 gap-1 overflow-hidden">
+    
+    {{-- Lateral izquierda (slider) --}}
+    <div id="slider" class="relative overflow-hidden z-0 sm:col-span-1 md:col-span-2 lg:col-span-2 w-full min-h-[300px]">
+        @foreach ($posts->take(3) as $index => $post)
+            <div
+                class="slide absolute w-full h-full flex justify-center items-center transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }} rounded-sm">
+                <img src="{{ $post->poster }}" alt="home" class="object-cover w-full h-full rounded-sm">
             </div>
-        </div>
-
-        {{-- border-2 border-black" --}}
-        <div class="w-full flex flex-col col-span-1 items-end gap-2 h-[400px]">
-            @foreach ($posts->take(3) as $post)
-                <div class="w-full h-[128px]">
-                    <img class="h-[128px] w-full rounded-sm" src="{{ $post->poster }}" alt="home">
-                </div>
-            @endforeach
-        </div>
-
+        @endforeach
     </div>
+
+    {{-- Lateral derecha --}}
+    <div class="grid gap-1 sm:col-span-1 md:col-span-1 lg:col-span-1 h-full">
+        @foreach ($posts->take(3) as $post)
+            <div class="flex justify-center items-center">
+                <img class="w-[300px] h-[128px] rounded-sm object-cover" src="{{ $post->poster }}" alt="home">
+            </div>
+        @endforeach
+    </div>
+
+</div>
+
 
     <div class="w-full mt-2 flex flex-col items-start">
 
