@@ -6,16 +6,16 @@
 
 @section('content')
 
-    @if($posts->isEmpty())
+    {{-- @if ($posts->isEmpty())
         <p>No hay publicaciones.</p>
-    @endif
+    @endif --}}
 
     <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 w-full h-fit p-2 gap-1 overflow-hidden">
 
-        {{-- Lateral izquierda (slider) --}}
+        {{-- Slider con los últimos 3 posts --}}
         <div id="slider"
             class="relative overflow-hidden z-0 sm:col-span-1 md:col-span-2 lg:col-span-2 w-full min-h-[300px]">
-            @foreach ($posts->take(3) as $index => $post)
+            @foreach ($posts->slice(-3)->values() as $index => $post)
                 <div
                     class="slide absolute w-full h-full flex justify-center items-center transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }} rounded-sm">
                     <img src="{{ $post->poster }}" alt="home" class="object-cover w-full h-full rounded-sm ">
@@ -23,10 +23,11 @@
             @endforeach
         </div>
 
-        {{-- Lateral derecha --}}
+        {{-- Lateral derecha con el resto de los posts --}}
         <div class="grid gap-1 sm:col-span-1 md:col-span-1 lg:col-span-1 h-full">
-            @foreach ($posts->take(3) as $post)
-                <div class="flex justify-center items-center transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
+            @foreach ($posts->slice(0, $posts->count() - 3) as $post)
+                <div
+                    class="flex justify-center items-center transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
                     <img class="w-[300px] h-[128px] rounded-sm object-cover" src="{{ $post->poster }}" alt="home">
                 </div>
             @endforeach
