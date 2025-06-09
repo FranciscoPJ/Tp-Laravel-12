@@ -83,10 +83,9 @@ class CategoryController extends Controller
         $categories = Category::all(); // Pasa las categorías
 
         //  Si el usuario no es el dueño, abortar con error 403 (Prohibido)
-        if (auth()->id() !== $post->id_user) {
+        if (!auth()->check() || auth()->id() !== $post->id_user) {
             abort(403, 'No tenés permiso para editar este post.');
         }
-
         return view('category.edit', compact('post', 'categories'));
     }
 
